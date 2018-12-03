@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Abuse cases A&E attendance, Force Layout Chart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <style>
+        #tooltip {
+            position: absolute;
+            display: none;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+<body>
+    <svg width="800" height="480">
+    </svg>
+
+    <div class="card" style="width: 18rem;" id="tooltip">
+        <div class="card-body">
+            <h5 class="card-title" id="title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="subtitle">Card subtitle</h6>
+        </div>
+    </div>
+
+    <script>
+		var simulation = d3.forceSimulation()
+    .force("collide", d3.forceCollide().radius(function (d) { return d.cases + 5; }))
+    // .force("center", d3.forceCenter(400, 240))
+    .force('x', d3.forceX().x(function (d) {
+        return myScale(d.cases);
+    }))
+    .force('y', d3.forceY().y(function (d) {
+        return 240;
+    }));
+		
+		var node = svg.selectAll(".node")
+    .data(abuses)
+    .enter().append("g")
+    .attr("class", "node");
+
+node.append('circle')
+    .attr('r', 30)
+    .attr('fill', "blue");
+		node.append('circle')
+    .attr('r', function (d) {
+        return d.cases;
+    })
+    .attr('fill', function (d) {
+        return myColorScale(d.cases);
+    });
+        var abuses = [
+            { district: "Central & Western", cases: 14.5, map_id: 1 },
+            { district: "Wan Chai", cases: 18.7, map_id: 15 },
+            { district: "Eastern", cases: 18.2, map_id: 2 },
+            { district: "Southern", cases: 22.0, map_id: 11 },
+            { district: "Yau Tsim Mong", cases: 17.1, map_id: 17 },
+            { district: "Sham Shui Po", cases: 21.3, map_id: 10 },
+            { district: "Kowloon City", cases: 17.5, map_id: 4 },
+            { district: "Wong Tai Sin", cases: 20.1, map_id: 16 },
+            { district: "Kwun Tong", cases: 15.9, map_id: 6 },
+            { district: "Kwai Tsing", cases: 23.3, map_id: 5 },
+            { district: "Tsuen Wan", cases: 14.9, map_id: 13 },
+            { district: "Tuen Mun", cases: 38.3, map_id: 14 },
+            { district: "Yuen Long", cases: 42.6, map_id: 18 },
+            { district: "Northern", cases: 17.6, map_id: 7 },
+            { district: "Tai Po", cases: 16.3, map_id: 12 },
+            { district: "Shatin", cases: 14.1, map_id: 9 },
+            { district: "Sai Kung", cases: 17.8, map_id: 8 },
+            { district: "Islands", cases: 21.0, map_id: 3 }
+        ];
+
+        var myScale = d3.scaleLinear().domain([14, 19, 43]).range([100, 400, 700]);
+        var myColorScale = d3.scaleLinear().domain([14, 19, 43]).range(["green", "orange", "red"]);
+
+        var svg = d3.select("svg");
+
+        // Code for Force Layout Simulator
+
+        var circles = d3.selectAll("circle");
+
+        var tooltip = d3.select("#tooltip");
+        var title = d3.select("#title");
+        var subtitle = d3.select("#subtitle");
+
+        circles
+            .on("mouseover", function () {
+                tooltip.style("display", "block");
+            })
+            .on("mouseout", function () {
+                tooltip.style("display", "none");
+            })
+            .on("mousemove", function (d) {
+                tooltip
+                    .style("left", (d3.event.pageX + 10) + "px")
+                    .style("top", (d3.event.pageY - 100) + "px");
+
+                title.text(d.district);
+                subtitle.text(d.cases + " cases per 100k population.");
+            });
+
+    </script>
+
+</body>
+
+</html>

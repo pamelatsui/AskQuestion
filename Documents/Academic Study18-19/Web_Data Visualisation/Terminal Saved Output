@@ -1,0 +1,138 @@
+Last login: Mon Nov 26 10:34:14 on ttys000
+PamelaTsuis-MacBook-Pro:~ PamelaTsui$ su PamelaTsui
+Password:
+bash-3.2$ sudo npm install -g http-server
+Password:
+/usr/local/bin/hs -> /usr/local/lib/node_modules/http-server/bin/http-server
+/usr/local/bin/http-server -> /usr/local/lib/node_modules/http-server/bin/http-server
++ http-server@0.11.1
+updated 1 package in 1.74s
+bash-3.2$ http-server
+Starting up http-server, serving ./public
+Available on:
+  http://127.0.0.1:8081
+  http://158.182.203.98:8081
+Hit CTRL-C to stop the server
+[Mon Nov 26 2018 11:07:10 GMT+0800 (Hong Kong Standard Time)] "GET /" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+[Mon Nov 26 2018 11:07:10 GMT+0800 (Hong Kong Standard Time)] "GET /favicon.ico" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+[Mon Nov 26 2018 11:07:10 GMT+0800 (Hong Kong Standard Time)] "GET /favicon.ico" Error (404): "Not found"
+^Chttp-server stopped.
+bash-3.2$ ls
+Applications		Downloads		Pictures
+Creative Cloud Files	Library			Public
+Desktop			Movies			node_modules
+Documents		Music			package-lock.json
+bash-3.2$ cd 
+bash-3.2$ cd Documents/
+bash-3.2$ ls
+Academic Study18-19	Hands-On2018		lunch photos
+Adobe			My Tableau Repository
+bash-3.2$ cd Academic\ Study18-19/
+bash-3.2$ ls
+Application Form_Intellectual Scholarship for Outstanding Performance (2018-19).doc
+Branding and Communication
+Business data analytics
+Creative Expression
+Crisis Communication
+Rhetorical Approaches to Communication
+Web _ Data Visualisation
+_DS_Store
+bash-3.2$ cd Web\ _\ Data\ Visualisation/
+bash-3.2$ ls
+Assignment1
+Group project
+Individual Assignment_TsuiPuiYing_15223361
+Individual Assignment_TsuiPuiYing_15223361.zip
+Individual assignment.html
+Itec2016-S00 CourseOverview.pdf
+Itec2016-S01 WebBasics.pdf
+Itec2016-S02 JavaScript.pdf
+Itec2016-S03 ResWebDesign.pdf
+Itec2016-S08 Backend.pdf
+Lab 3.html
+illdy.2.0.1.zip
+itec2016-S04 Charts.pdf
+lab1.css
+lab2.html
+notes for web.docx
+recording.mp3
+startbootstrap-creative-gh-pages.zip
+bash-3.2$ cd Group\ project/
+bash-3.2$ ls
+Household		glint-colorlib.zip
+bash-3.2$ cd Household/
+bash-3.2$ ls
+Bar_chart.html	map.html
+bash-3.2$ ls
+Bar_chart.html	map.html
+bash-3.2$ python -m SimpleHTTPServer
+Serving HTTP on 0.0.0.0 port 8000 ...
+127.0.0.1 - - [26/Nov/2018 11:15:22] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [26/Nov/2018 11:15:22] code 404, message File not found
+127.0.0.1 - - [26/Nov/2018 11:15:22] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [26/Nov/2018 11:15:24] "GET /map.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Nov/2018 11:15:25] code 404, message File not found
+127.0.0.1 - - [26/Nov/2018 11:15:25] "GET /HKG_adm.json HTTP/1.1" 404 -
+127.0.0.1 - - [26/Nov/2018 11:15:25] code 404, message File not found
+127.0.0.1 - - [26/Nov/2018 11:15:25] "GET /favicon.ico HTTP/1.1" 404 -
+^C----------------------------------------
+Exception happened during processing of request from ('158.182.9.105', 65528)
+Traceback (most recent call last):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 295, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 321, in process_request
+    self.finish_request(request, client_address)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 655, in __init__
+    self.handle()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 310, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py", line 480, in readline
+    data = self._sock.recv(self._rbufsize)
+KeyboardInterrupt
+----------------------------------------
+^C----------------------------------------
+Exception happened during processing of request from ('158.182.9.105', 65529)
+Traceback (most recent call last):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 295, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 321, in process_request
+    self.finish_request(request, client_address)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 334, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 655, in __init__
+    self.handle()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 310, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py", line 480, in readline
+    data = self._sock.recv(self._rbufsize)
+KeyboardInterrupt
+----------------------------------------
+127.0.0.1 - - [26/Nov/2018 11:19:50] "GET /map.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Nov/2018 11:19:50] "GET /HKG_adm.json HTTP/1.1" 200 -
+^CTraceback (most recent call last):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py", line 162, in _run_module_as_main
+    "__main__", fname, loader, pkg_name)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SimpleHTTPServer.py", line 235, in <module>
+    test()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SimpleHTTPServer.py", line 231, in test
+    BaseHTTPServer.test(HandlerClass, ServerClass)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/BaseHTTPServer.py", line 599, in test
+    httpd.serve_forever()
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 236, in serve_forever
+    poll_interval)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/SocketServer.py", line 155, in _eintr_retry
+    return func(*args)
+KeyboardInterrupt
+bash-3.2$ python -m SimpleHTTPServer
+Serving HTTP on 0.0.0.0 port 8000 ...
+127.0.0.1 - - [26/Nov/2018 11:19:59] "GET /map.html HTTP/1.1" 200 -
+127.0.0.1 - - [26/Nov/2018 11:20:00] "GET /HKG_adm.json HTTP/1.1" 200 -
+

@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Untitled Document</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+	<style>
+			#tooltip5 {
+            position: absolute;
+            display: none;
+			pointer-events: none;
+        }
+
+        .link {
+            stroke: #ccc;
+        }
+	</style>
+</head>
+
+<body>
+	<div style="background-color: white">
+                <div class="col-lg-6" style="display: flex;
+  justify-content: center;" data-aos="fade-up" data-aos-duration="1000">
+            <svg id="circleside" width="800" height="800">
+            </svg>
+        </div>
+
+        <div class="card" style="width: 18rem;" id="tooltip5">
+            <div class="card-body">
+                <h5 class="card-title" id="title5">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted" id="subtitle5">Card subtitle</h6>
+            </div>
+        </div>
+        </div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+	
+	  <script>
+
+        var abuses5 = [
+            { district: "Central & Western", cases: 43, map_id: 1 },
+            { district: "Wan Chai", cases: 44, map_id: 15 },
+            { district: "Eastern", cases: 43, map_id: 2 },
+            { district: "Southern", cases: 43, map_id: 11 },
+            { district: "Yau Tsim Mong", cases: 42, map_id: 17 },
+            { district: "Sham Shui Po", cases: 42, map_id: 10 },
+            { district: "Kowloon City", cases: 43, map_id: 4 },
+            { district: "Wong Tai Sin", cases: 45, map_id: 16 },
+            { district: "Kwun Tong", cases: 43, map_id: 6 },
+            { district: "Kwai Tsing", cases: 43, map_id: 5 },
+            { district: "Tsuen Wan", cases: 43, map_id: 13 },
+            { district: "Tuen Mun", cases: 43, map_id: 14 },
+            { district: "Yuen Long", cases: 41, map_id: 18 },
+            { district: "Northern", cases: 42, map_id: 7 },
+            { district: "Tai Po", cases: 43, map_id: 12 },
+            { district: "Shatin", cases: 44, map_id: 9 },
+            { district: "Sai Kung", cases: 42, map_id: 8 },
+            { district: "Islands", cases: 41, map_id: 3 }
+        ];
+
+        var edges5 = [
+            { "source": 0, "target": 1 },
+            { "source": 0, "target": 3 },
+            { "source": 0, "target": 4 },
+            { "source": 0, "target": 17 },
+            { "source": 1, "target": 2 },
+            { "source": 1, "target": 3 },
+            { "source": 1, "target": 4 },
+            { "source": 2, "target": 3 },
+            { "source": 2, "target": 6 },
+            { "source": 2, "target": 8 },
+            { "source": 4, "target": 5 },
+            { "source": 4, "target": 6 },
+            { "source": 5, "target": 6 },
+            { "source": 5, "target": 9 },
+            { "source": 5, "target": 15 },
+            { "source": 6, "target": 7 },
+            { "source": 6, "target": 8 },
+            { "source": 6, "target": 15 },
+            { "source": 7, "target": 8 },
+            { "source": 7, "target": 15 },
+            { "source": 7, "target": 16 },
+            { "source": 8, "target": 16 },
+            { "source": 9, "target": 10 },
+            { "source": 9, "target": 15 },
+            { "source": 10, "target": 11 },
+            { "source": 10, "target": 12 },
+            { "source": 10, "target": 14 },
+            { "source": 10, "target": 15 },
+            { "source": 10, "target": 17 },
+            { "source": 11, "target": 12 },
+            { "source": 12, "target": 13 },
+            { "source": 12, "target": 14 },
+            { "source": 13, "target": 14 },
+            { "source": 14, "target": 15 },
+            { "source": 14, "target": 16 },
+            { "source": 15, "target": 16 }
+        ];
+
+        var myScale5 = d3.scaleLinear().domain([21.100, 41.500]).range([100, 700]); //project the range into the values that fit our svg
+        var myColorScale5 = d3.scaleLinear().domain([21.100, 41.500]).range(["#a2ffee", "#22c1c3"]);
+
+        var svg5 = d3.select("#circleside");
+
+        // Code for Force Layout Simulator
+        // var simulation = d3.forceSimulation()
+        //.force("collide", d3.forceCollide().radius(30))
+        //   .force("collide", d3.forceCollide().radius(function (d) { return d.cases + 5; }))
+        //.force("center", d3.forceCenter(400, 240));;
+        //  .force('x', d3.forceX().x(function (d) {
+        //       return myScale(d.cases);
+        //  }))
+        //  .force('y', d3.forceY().strength(0.01).y(function (d) {
+        //        return 480;
+        //    }));
+
+        // var simulation = d3.forceSimulation()
+        //     .force("link", d3.forceLink().id(function (d) { return d.index }))
+        //    .force("center", d3.forceCenter(400, 400))
+
+        var simulation5 = d3.forceSimulation()
+            .force("charge", d3.forceManyBody().strength(-700).distanceMin(20).distanceMax(400))
+            .force("link", d3.forceLink().id(function (d) { return d.index }))
+            .force("center", d3.forceCenter(400, 400))
+
+
+        //svg.append("g")
+        //     .attr("transform", "translate(0," + 450 + ")")
+        //   .call(d3.axisBottom(myScale));
+
+        simulation5.nodes(abuses5); //18 nodes
+
+        var link5 = svg5.selectAll(".link")
+            .data(edges5)
+            .enter()
+            .append("line")
+            .attr("class", "link");
+
+        var node5 = svg5.selectAll(".node") //but there is no node 
+            .data(abuses5) //unmatch between them
+            .enter().append("g") //generate a group for each element in the array
+            .attr("class", "node"); //assgin a class to each of the group
+
+        console.log(node5);
+        //return;
+
+        //node.append('circle')
+        //  .attr('r', 30)
+        //.attr('fill', "blue");
+
+        simulation5.force("link").links(edges5);
+
+
+
+        node5.append('circle')
+            .attr("class", "node5Circle")
+            .attr('r', function (d) {
+                return d.cases;
+            })
+            .attr('fill', function (d) {
+                return myColorScale5(d.cases);
+            });
+
+        node5.append("text")
+            .attr("dx", -60)
+            .attr("dy", 20)
+            .style("font-family", "sans-serif")
+            .style("font-weight", "bold")
+            .style("font-size", "13px")
+            .style("fill", "#057576")
+            .text(function (d) {
+                return d.district
+            });
+
+        simulation5.on("tick", function () {
+            link5
+                .attr("x1", function (d) {
+                    return d.source.x; //the corresponding node's x value
+                })
+                .attr("y1", function (d) {
+                    return d.source.y;
+                })
+                .attr("x2", function (d) {
+                    return d.target.x;
+                })
+                .attr("y2", function (d) {
+                    return d.target.y;
+                });
+
+            node5
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
+        });
+
+
+        var circles5 = d3.selectAll(".node5Circle");
+        console.log(circles5);
+        var tooltip5 = d3.select("#tooltip5");
+        var title5 = d3.select("#title5");
+        var subtitle5 = d3.select("#subtitle5");
+        console.log(subtitle5);
+        circles5
+            .on("mouseover", function () {
+                tooltip5.style("display", "block");
+                d3.select(this).style("opacity", 0.2);
+            })
+            .on("mouseout", function () {
+                tooltip5.style("display", "none");
+                d3.select(this).style("opacity", 1);
+            })
+            .on("mousemove", function (d) {
+                tooltip5
+                    .style("left", (d3.event.pageX + 40) + "px")
+                    .style("top", (d3.event.pageY - 3150) + "px");
+                title5.text(d.district);
+                subtitle5.text("Average age: " + d.cases + "years old.");
+            });
+
+
+    </script>
+
+</body>
+</html>

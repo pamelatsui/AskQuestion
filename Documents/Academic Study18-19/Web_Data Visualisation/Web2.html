@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>lab2</title>
+		<style>
+		.class3
+		{
+			background-color: lightblue
+		}
+	</style>
+</head>
+
+<body onload="pageLoaded()">
+
+<!--(this)refers to the element button -->
+	<div id="div01">
+	<button type="button" onClick="btn1Clicked(this)">Click button 1</button> 
+	</div>
+	
+	<div id="div02">
+		<button type="button" onClick="btn2Clicked(this)">Click button 2</button>
+	</div>
+	<div id="div03">
+		<button type="button" onclick="btn3Clicked(this)">I'm Button 3, Click me!</button>
+	</div>
+	<div id="div04">
+	<img src="http://via.placeholder.com/350x150/dec.png" />
+	</div>
+	<div id="div05"></div>
+	<div id="div06"></div>
+	<div id="div07"></div>
+	<div id="div08"></div>
+	<div id="div09"></div>
+	<div id="div10"></div>
+	<div id="div11"></div>
+	<div id="div12"></div>	
+	
+	<script>
+//	Button, onclick and innerHTML; (elem)refers to that button with a javascript form //
+		function btn1Clicked(elem)
+		{
+			console.log("console output");
+			elem.innerHTML = "Don't Click me!";
+		};
+//Modifying style and innerHTML		
+		function btn2Clicked(elem)
+		{
+			elem.style = "display:none";
+			elem.parentNode.innerHTML = "It's gone";
+		};
+//Modifying the class
+		function btn3Clicked(elem)
+		{
+		elem.parentNode.className += " class3";
+		};
+		
+		function pageLoaded() {
+    runDiv5();
+    runDiv6();
+    runDiv7();
+    runDiv8();
+    runDiv9();
+    runDiv10();
+    runDiv11();
+    runDiv12();
+}
+		function runDiv5(){
+			if(Math.random() > 0.5){
+				document.getElementById("div05").innerHTML = "Upper";
+				}
+			else
+				{
+				document.getElementById("div05").innerHTML = "Lower";}
+		}
+		
+		function runDiv6(){
+			for (i=0; i<10; i=i+1){
+				document.getElementById("div06").innerHTML += i + " ";
+			}
+		}
+		function runDiv7(){
+		var boo = true;
+		var num = 12;
+		var string = "HIHI";
+		
+		document.getElementById("div07").innerHTML = boo + num + string + "<br>";
+		document.getElementById("div07").innerHTML += typeof boo + typeof num + typeof string + "<br>";
+		}
+		
+		function runDiv8(){
+		var declared = "Hello";
+		var xdeclared;
+			
+		document.getElementById("div08").innerHTML = typeof declared + typeof xdeclared + typeof cdeclared + "<br>";
+			
+		if (typeof cdeclared !== "undefined"){
+		     if (cdeclared == 1) console.log("Reference Error");
+			}
+		}
+	</script>
+</body>
+</html>

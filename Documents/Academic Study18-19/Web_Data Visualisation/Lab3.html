@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- the line is refer to responsive viewport meta tag which ensure proper rendering and touch zooming for all devices-->
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<!-- the line imports the boostrap styled sheet-->
+<title>Lab 3</title>
+<style>
+.class3 {
+	background-color: lightsalmon
+}
+</style>
+</head>
+
+<body onLoad="pageLoaded()">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+<h1 align="center" style="text-decoration-line: underline">The final project portfolio</h1>
+<p align="center">This is my first bootstrap page</p>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav"> <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> <a class="nav-item nav-link" href="#">Features</a> <a class="nav-item nav-link" href="#">Pricing</a> <a class="nav-item nav-link disabled" href="#">Disabled</a> </div>
+    </div>
+  </nav>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Fluid jumbotron</h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+  </div>
+  <div class="row"> 
+    <!-- The 12 cards -->
+    
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div01">
+      <button type="button" class="btn btn-info" onclick="btn1Clicked(this)">I'm Button 1, Click me!</button>
+    </div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div02">
+      <button type="button" class="btn btn-info" onclick="btn2Clicked(this)">I'm Button 2, Click me</button>
+    </div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div03">
+      <button type="button" class="btn btn-info" onclick="btn3Clicked(this)">I'm Button 3, Click me!</button>
+    </div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div04"><img class="img-fluid img-thumbnail" alt="image" src="http://via.placeholder.com/350x150/dec.png" /></div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div05"></div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div06"></div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div07"></div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div08"></div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div09"></div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div10"></div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div11"></div>
+    <div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3" id="div12"></div>
+    <canvas id="myChart"></canvas>
+    <hr>
+    <canvas id="myChart2"></canvas>
+    <hr>
+    <canvas id="myChart3"></canvas>
+    <hr>
+    <canvas id="myChart4"></canvas>
+    <hr>
+    <div id="container" class="col-12"></div>
+  </div>
+</div>
+<div class="card col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3"><img class="img-fluid img-thumbnail" alt="responsive_web" src="http://cslinux0.comp.hkbu.edu.hk/~mtchoy/Screen%20Shot%202017-09-11%20at%2012.32.26%20PM.png"></div>
+<div class="card text-center">
+  <div class="card-header"> Featured </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a> </div>
+  <div class="card-footer text-muted"> 2 days ago </div>
+</div>
+<script>
+    function pageLoaded() {
+    runDiv5();
+    runDiv6();
+    runDiv7();
+    runDiv8();
+    runDiv9();
+    runDiv10();
+    runDiv11();
+    runDiv12();
+}
+	function btn1Clicked(elem) {
+        console.log("console output");
+        elem.innerHTML = "Don't click me!";
+    };
+	function btn2Clicked(elem){
+		elem.style= "display:none";
+		elem.parentNode.innerHTML="It's gone";
+	};
+//how to put it in the center?//
+	function btn3Clicked(elem) {
+		elem.parentNode.className += " class3";
+};
+//how to output a real number into the text?//
+	function runDiv5() {
+		if (Math.random() > 0.5) {
+        document.getElementById("div05").innerHTML = "Upper";
+		} else {
+        document.getElementById("div05").innerHTML = "Lower";
+    } 
+}
+	function runDiv6() {
+	var string = "<table>";
+    for (i = 0; i < 20; i = i + 1) {
+
+        document.getElementById("div06").innerHTML += "<tr><td>" + "  " + i + "  " + "</td>";
+
+    }
+		string += "</tr>" + "</table>"
+}
+//how to divide them into three rolls?//
+	function runDiv7() {
+
+    var booleanVariable = true;
+    var numericVariable = 12;
+    var stringVariable = "Twelve";
+
+    document.getElementById("div07").innerHTML = booleanVariable + " " + numericVariable + " " + stringVariable + "<br>";
+    document.getElementById("div07").innerHTML += typeof booleanVariable + " " + typeof numericVariable + " " + typeof stringVariable;
+}
+	function runDiv8() {
+
+    var declaredAndAssigned = "Some value";
+
+    var declaredButNotAssigned;
+
+    document.getElementById("div08").innerHTML
+        = typeof declaredAndAssigned + " " + typeof declaredButNotAssigned + " " + typeof notYetDeclared;
+        
+    // the last two will give "undefined" as its type.
+
+    // if (notYetDeclared == 1) console.log("Reference Error");
+
+    if (typeof notYetDeclared !== "undefined") {
+
+        if (notYetDeclared == 1) console.log("Reference Error");
+
+    }
+
+}
+	function runDiv9() {
+
+    var sukiyaki = { beef: "2 lb", eggs: 4, crucial: "pot" };
+
+    var string = "<table class='table table-striped table-hover table-bordered'>";
+
+    for (var key in sukiyaki) {
+        string += "<tr><td>" + key + "<td><td>" + sukiyaki[key] + "</td></tr>";
+    }
+		string += "</table>"
+    
+    // sukiyaki[key] are the values.
+
+    document.getElementById("div09").innerHTML = string;
+
+}
+	function runDiv10() {
+
+    var sukiyakiParticipants = ["Martin", "Kenny", "Jarvis"];
+
+var string = typeof (sukiyakiParticipants) + "<br><ul class='list-group'>";
+
+for (var person of sukiyakiParticipants) {
+    string += "<li class='list-group-item-action'>" + person + "</li>";
+}
+
+string += "</ul>"
+
+    document.getElementById("div10").innerHTML = string;
+//var string = typeof (sukiyakiParticipants) + "<br><ul>";
+
+//for (var person of sukiyakiParticipants) {
+//    string += "<li>" + person + "</li>";
+//}
+
+//string += "</ul>"
+}
+//not understand how to make a list out of that//
+	function runDiv11() {
+
+    var sukiyakiParticipants = ["Martin", "Kenny", "Jarvis"];
+
+    function shorterThan6(value) {
+        return value.length < 6;    // counting the number of characters
+    }
+
+    var returnArray = sukiyakiParticipants.filter(shorterThan6);
+
+    document.getElementById("div11").innerHTML = returnArray[0];
+
+}
+	function runDiv12() {
+
+    var str = "How are you doing today?";
+    var res = str.split(" ");
+    document.getElementById("div12").innerHTML = res[3]; // doing
+
+}
+</script> 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script> 
+<script src="https://code.highcharts.com/highcharts.js"></script> 
+
+<!--demo--> 
+<script>
+    function drawChart1() {
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ["Boys 0-4", "Boys 5-9", "Boys 10-14", "Boys 15-19"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [7242, 5436, 5986, 5485],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Childhood Injury Profile for Kowloon City District 2001-2012 ",
+                    fontSize: 24
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+    }
+	var waypoint = new Waypoint({
+    element: document.getElementById('myChart'),
+    handler: function (direction) {
+        drawChart1();
+    },
+    offset: 'bottom-in-view'
+})
+	//drawChart1();
+	</script> 
+<script>
+    function drawChart2() {
+        var ctx = document.getElementById("myChart2").getContext('2d');
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Boys 0-4 years", "Girls 0-4 years", "Boys 10-14 years", "Boys 5-9 years"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [5,206 , 3991, 3918, 3897],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Vulnerable groups for Island district",
+                    fontSize: 24
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+    }
+	var waypoint2 = new Waypoint({
+    element: document.getElementById('myChart2'),
+    handler: function (direction) {
+        drawChart2();
+    },
+    offset: 'bottom-in-view'
+})
+	//drawChart2();
+</script> 
+<script>
+    function drawChart3() {
+        var ctx = document.getElementById("myChart3").getContext('2d');
+        var myChart3 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Boys 0-4 years", "Girls 0-4 years", "Boys 10-14 years", "Boys 5-9 years"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [5,206 , 3991, 3918, 3897],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Vulnerable groups for Island district",
+                    fontSize: 24
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+    }
+	var waypoint3 = new Waypoint({
+    element: document.getElementById('myChart3'),
+    handler: function (direction) {
+        drawChart3();
+    },
+    offset: 'bottom-in-view'
+})
+	//drawChart2();
+</script> 
+<script>
+    function drawChart4() {
+        var ctx = document.getElementById("myChart4").getContext('2d');
+        var myChart4 = Chart.PolarArea(ctx, {
+            data: {
+                labels: ["Boys 0-4", "Boys 5-9", "Boys 10-14", "Boys 15-19"],
+                datasets: [{
+                    data: [6324, 5404, 5540, 5194],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(154, 162, 235, 0.2)',
+                        'rgba(154, 162, 35, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(154, 162, 235, 1)',
+                        'rgba(154, 162, 35, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Vulnerable groups for Island district",
+                    fontSize: 24
+                },
+                legend: {
+                    display: false
+                }
+            }
+        });
+    }
+	var waypoint4 = new Waypoint({
+		element: document.getElementById('myChart4'),
+    	handler: function (direction) {
+        drawChart4();
+    },
+    offset: 'bottom-in-view'
+})
+    //drawChart4();
+</script> 
+<script>
+	Highcharts.chart('container', {
+
+    title: {
+        text: 'Solar Employment Growth by Sector, 2010-2016'
+    },
+
+    subtitle: {
+        text: 'Source: thesolarfoundation.com'
+    },
+
+    yAxis: {
+        title: {
+            text: 'Number of Employees'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2010
+        }
+    },
+
+    series: [{
+        name: 'Installation',
+        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }, {
+        name: 'Manufacturing',
+        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+    }, {
+        name: 'Sales & Distribution',
+        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+    }, {
+        name: 'Project Development',
+        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+    }, {
+        name: 'Other',
+        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+
+	</script>
+</body>
+</html>

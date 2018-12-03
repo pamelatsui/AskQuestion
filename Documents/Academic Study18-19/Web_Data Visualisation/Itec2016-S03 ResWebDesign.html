@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lab #2</title>
+    <style>
+        .class3 {
+            background-color: lightsalmon
+        }
+    </style>
+</head>
+
+<body onload="pageLoaded()">
+    <div id="div01">
+        <button type="button" onclick="btn1Clicked(this)">I'm Button 1, Click me!</button>
+    </div>
+    <div id="div02">
+        <button type="button" onclick="btn2Clicked(this)">I'm Button 2, Click me!</button>
+
+    </div>
+    <div id="div03">
+        <button type="button" onclick="btn3Clicked(this)">I'm Button 3, Click me!</button>
+
+    </div>
+    <div id="div04">
+        <img src="http://via.placeholder.com/350x150/dec.png" />
+    </div>
+    <div id="div05">Lower</div>
+    <div id="div06">Hello Javascript
+    </div>
+    <div id="div07"></div>
+    <div id="div08"></div>
+    <div id="div09"></div>
+    <div id="div10"></div>
+    <div id="div11"></div>
+    <div id="div12"></div>
+    <script>
+        function btn1Clicked(elem) {
+            var a = 1;
+
+            console.log(a);
+            a = 100;
+
+            console.log(a);
+            elem.innerHTML = "Don't click me!";
+        };
+        function btn2Clicked(elem) {
+            elem.style = "display:none";
+            elem.parentNode.innerHTML += "It's gone";
+        };
+        function btn3Clicked(elem) {
+            elem.parentNode.className += " class3";
+        };
+        function pageLoaded() {
+            runDiv5();
+            runDiv6();
+            runDiv7();
+            runDiv8();
+            runDiv9();
+            runDiv10();
+            runDiv11();
+            runDiv12();
+        }
+		console.log;
+        function runDiv5() {
+            if (Math.random() > 0.5) {
+                document.getElementById("div05").innerHTML = "Upper";
+            } else {
+                document.getElementById("div05").innerHTML = "Lower";
+            }
+        }
+        function runDiv6() {
+
+            for (i = 0; i < 10; i = i + 1) {
+
+                document.getElementById("div06").innerHTML += i + " ";
+
+            }
+
+        }
+        function runDiv7() {
+
+            var booleanVariable = true;
+            var numericVariable = 12;
+            var stringVariable = "Twelve";
+
+            document.getElementById("div07").innerHTML = booleanVariable + " " + numericVariable + " " + stringVariable + "<br>";
+            document.getElementById("div07").innerHTML += typeof booleanVariable + " " + typeof numericVariable + " " + typeof stringVariable;
+        }
+
+        function runDiv9() {
+
+            var sukiyaki = { beef: "2 lb", eggs: 4, crucial: "pot" };
+
+            var string = "";
+
+            for (var key in sukiyaki) {
+                string += key + ": " + sukiyaki[key] + "<br>";
+            }
+
+            // sukiyaki[key] are the values.
+
+            document.getElementById("div09").innerHTML = string;
+            var string = "<table>";
+
+            for (var key in sukiyaki) {
+                string += "<tr><td>" + key + "</td><td>" + sukiyaki[key] + "</td></tr>";
+            }
+
+            string += "</table>"
+        }
+    </script>
+</body>
+
+</html>
